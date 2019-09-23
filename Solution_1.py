@@ -2,7 +2,7 @@ import numpy as np
 
 
 #read input file
-inputs=open("/Users/IssacQI/Desktop/test_input.txt","r")
+inputs=open("/Users/IssacQI/Desktop/COMP_560/COMP_560_HW1/test_input.txt","r")
 
 dimension=int(inputs.readline())
 characters=np.empty((dimension,dimension),dtype=np.unicode_)
