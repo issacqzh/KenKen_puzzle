@@ -1,8 +1,9 @@
 import numpy as np
-
+import os
 
 #read input file
-inputs=open("/Users/IssacQI/Desktop/COMP_560/COMP_560_HW1/test_input.txt","r")
+
+inputs=open(os.getcwd()+"/test_input.txt","r")
 
 dimension=int(inputs.readline())
 characters=np.empty((dimension,dimension),dtype=np.unicode_)
@@ -70,14 +71,14 @@ while(True):
     row=curr_node.coordinator[0]
     column=curr_node.coordinator[1]
     possible_values=all_values.copy()
-    # 减去 row and column
+    # remove row and column
     for i in range(dimension):
         if coordinator_values[row][i] in possible_values:
             possible_values.remove(coordinator_values[row][i])
         if coordinator_values[i][column] in possible_values:
             possible_values.remove((coordinator_values[i][column]))
 
-    # 减去 constrain
+    # remove constrain
     character=characters[row][column]
     cst_cor=coordinator_chunk[character]
     cst_num=int(constrain[character][0])
