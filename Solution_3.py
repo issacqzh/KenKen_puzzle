@@ -298,11 +298,11 @@ for restarts in range(1, N):
                         min_violations = total_violations
                         # print("Move to worse state: " + str(min_violations))
 
-                # Trigger random restart
-                if random.randint(0, N ** 10) <= N ** (N - 1):
-                    print("---------- Restart # " + str(restarts) + "----------")
-                    print("Last recorded violations: " + str(min_violations))
-                    break
+            # Trigger random restart
+            if random.randint(0, N ** 10) <= N ** (N - 1):
+                print("---------- Restart # " + str(restarts) + "----------")
+                print("Last recorded violations: " + str(min_violations))
+                break
 
 if not reached_global_min:
     print("---------- NO SOLUTION FOUND ----------")
