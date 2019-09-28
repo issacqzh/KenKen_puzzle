@@ -1,6 +1,6 @@
 import numpy as np
 import os
-
+import sys
 #read input file
 
 inputs=open(os.getcwd()+"/test_input.txt","r")
@@ -131,8 +131,11 @@ while(True):
     while(len(curr_node.data)==0):
         curr_node=curr_node.previous
         curr_node.next=None
-        row= curr_node.coordinator[0]
-        column=curr_node.coordinator[1]
+        try:
+            row = curr_node.coordinator[0]
+            column = curr_node.coordinator[1]
+        except:
+            sys.exit('No Solution')
         del curr_node.data[0]
         coordinator_values[row][column]=None
 

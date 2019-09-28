@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import sys
 # read input file
 inputs = open(os.getcwd()+"/test_input.txt", "r")
 dimension = int(inputs.readline())
@@ -122,8 +123,7 @@ while (True):
             if len(cst_cor_values) == 0:
                 continue
             else:
-                if cst_cor_values[0] / possible_values[i] != cst_num and possible_values[i] / cst_cor_values[
-                    0] != cst_num:
+                if cst_cor_values[0] / possible_values[i] != cst_num and possible_values[i] / cst_cor_values[0] != cst_num:
                     remove_list.append(possible_values[i])
         else:
             possible_values = [cst_num]
@@ -136,8 +136,11 @@ while (True):
     while (len(curr_node.data) == 0):
         curr_node = curr_node.previous
         curr_node.next = None
-        row = curr_node.coordinator[0]
-        column = curr_node.coordinator[1]
+        try:
+            row = curr_node.coordinator[0]
+            column = curr_node.coordinator[1]
+        except:
+            sys.exit('No Solution')
         del curr_node.data[0]
         coordinator_values[row][column] = None
 
@@ -155,7 +158,6 @@ while (True):
     min_len = -1
 
     for i in range(len(check_nodes)):
-
         possible_values1 = all_values.copy()
         row1 = check_nodes[i][0]
         column1 = check_nodes[i][1]
@@ -233,7 +235,6 @@ while (True):
         next_column = coor_list[0][1]
 
     next_node = Node(coordinator=(next_row, next_column))
-    print(next_row,next_column)
     curr_node.next = next_node
     next_node.previous = curr_node
     curr_node = next_node
