@@ -41,3 +41,6 @@ have to satisfy the mathematical expression of that block.
 Interpreter: Python 3.6
 Set up the script path and execution environment to run either Solution_1.py,
 Solution_2.py, or Solution_3.py.
+
+## Test Input
+You need to put the test_input.txt in the same folder.
