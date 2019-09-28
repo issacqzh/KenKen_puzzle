@@ -68,9 +68,9 @@ def print_state(cells):
 
 
 # TODO: delete?
-def set_domain():
-    for i in range(N):
-        dom.add(i + 1)
+# def set_domain():
+#     for i in range(N):
+#         dom.add(i + 1)
 
 
 def initialize_state(N, cells):
@@ -94,6 +94,8 @@ def check_block(block):
         block_val = 1
     elif block.op == '/':
         block_val = -1  # Reassign later: A / B won't yield negative #
+    else:  # No op for block
+        block_val = 0
 
     for c in block.cells:
         if block.op == '+':
@@ -205,9 +207,13 @@ for i in range(len(blocks.keys())):
     eq = f.readline()
     # Parsing equation
     bid = eq[0]
-    # Access last symbol of eq, len - 2 bc of \n.
-    n = eq[2:len(eq) - 2]
-    op = eq[len(eq) - 2]
+    # No op for block
+    if eq[len(eq) - 2] is not '+' and eq[len(eq) - 2] is not '-' and eq[len(eq) - 2] is not '*' and eq[len(eq) - 2] is not '/':
+        n = eq[2]
+        op = '+'
+    else:   # Access last symbol of eq, len - 2 bc of \n.
+        n = eq[2:len(eq) - 2]
+        op = eq[len(eq) - 2]
     # Assign to blocks
     blocks[bid].n = n
     blocks[bid].op = op
@@ -298,11 +304,11 @@ for restarts in range(1, N):
                         min_violations = total_violations
                         # print("Move to worse state: " + str(min_violations))
 
-                # Trigger random restart
-                if random.randint(0, N ** 10) <= N ** (N - 1):
-                    print("---------- Restart # " + str(restarts) + "----------")
-                    print("Last recorded violations: " + str(min_violations))
-                    break
+            # Trigger random restart
+            if random.randint(0, N ** 10) <= N ** (N - 1):
+                print("---------- Restart # " + str(restarts) + "----------")
+                print("Last recorded violations: " + str(min_violations))
+                break
 
 if not reached_global_min:
     print("---------- NO SOLUTION FOUND ----------")
