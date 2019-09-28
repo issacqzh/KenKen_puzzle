@@ -37,7 +37,7 @@ this puzzle are that: any # can only appear once per row and once
 per column. Furthermore, all values of cells within a given block
 have to satisfy the mathematical expression of that block.
 
-## How to run the code
+## Executing Instructions
 Interpreter: Python 3.6
 Set up the script path and execution environment to run either Solution_1.py,
 Solution_2.py, or Solution_3.py.
@@ -68,3 +68,6 @@ For restarts 1 → N:
             Else 
               Only transition to neighboring state with P(e^delta_energy/temp) 
        Trigger random restarts
+
+## Individual Contributions
+Julia Tian: Implemented the local search solution using greedy descent and a combination of simulated annealing and random restarts for optimization.
