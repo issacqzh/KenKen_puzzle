@@ -208,7 +208,7 @@ for i in range(len(blocks.keys())):
     # Parsing equation
     bid = eq[0]
     # No op for block
-    if eq[len(eq) - 2] is not '+' or eq[len(eq) - 2] is not '-' or eq[len(eq) - 2] is not '*' or eq[len(eq) - 2] is not '/':
+    if eq[len(eq) - 2] is not '+' and eq[len(eq) - 2] is not '-' and eq[len(eq) - 2] is not '*' and eq[len(eq) - 2] is not '/':
         n = eq[2]
         op = '+'
     else:   # Access last symbol of eq, len - 2 bc of \n.
